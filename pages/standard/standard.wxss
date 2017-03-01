@@ -1,0 +1,32 @@
+@import "../../wxParse/wxParse.wxss";
+.standard-box {
+    font-size: 28rpx;
+}
+
+.tap-hea {
+    border-bottom: 1px solid #e0e0e0;
+    color: #1f1f1f;
+    display: flex;
+    font-size: 32rpx;
+    height: 128rpx;
+    line-height: 128rpx;
+    text-align: center;
+}
+
+.tap-hea .tap {
+    flex: 1;
+    height: 100%;
+}
+
+.tap-hea .tap.active {
+    border-bottom: 4rpx solid #1f1f1f;
+}
+
+.tap-con {
+    border-top: 20rpx solid #f9f9f9;
+    text-align: center;
+}
+
+.tap-con img {
+    max-width: 100% !important;
+}

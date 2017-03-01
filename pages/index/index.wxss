@@ -1,0 +1,128 @@
+/**index.wxss**/
+@import 'font.wxss';
+@import '../template/template.wxss';
+
+.iconfont {
+  color: #272536;
+  font-size: 52rpx;
+  vertical-align: middle;
+}
+
+.iconfont-parking2 {
+  font-size: 138rpx;
+}
+
+.icon-jinru {
+  font-size: 40rpx;
+}
+
+.index-hea {
+  margin: 0 auto;
+  padding: 116rpx 0 104rpx;
+  /*width: 506rpx;*/
+}
+
+
+.iconfont-p {
+  line-height: 138rpx;
+}
+
+.index-hea dd {
+  font-size: 28rpx;
+  line-height: 50rpx;
+  padding-left: 62rpx;
+}
+
+.index-hea dd h3 {
+  font-size: 32rpx;
+  font-weight: bold;
+  line-height: 54rpx;
+}
+
+.index-hea dd p {
+  color: #b1b1b1;
+  display: block;
+}
+
+.index-hea dd strong {
+  color: #09bb08;
+  font-weight: normal;
+}
+
+.tap-box {
+  border-top: 1px solid #e0e0e0;
+  max-height: 640rpx;
+  overflow: auto;
+}
+
+.tap-box li {
+  border-bottom: 1px solid #e0e0e0;
+  height: 130rpx;
+  line-height: 130rpx;
+  padding: 0 43rpx;
+}
+
+.tap-box li .item-con span{
+  font-size: 28rpx;
+  font-weight: bold;
+  padding-left: 36rpx;
+  vertical-align: middle;
+}
+
+.index-hea dd,
+.item-tap .item-con {
+  flex: 1;
+}
+
+.standard-btn {
+  background-color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}

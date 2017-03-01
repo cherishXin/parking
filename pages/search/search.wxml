@@ -1,0 +1,14 @@
+<div class="search-box">
+    <import src="../template/template.wxml"/> 
+    <template is="header" data="{{...date}}"/>
+    <div class="search-con">
+        <strong>输入车牌号缴费：</strong>
+        <div class="input-box flex">
+            <input placeholder="请输入车牌号！" bindinput="setcarnFun" />
+            <view  bindtap="checkFun">查费用</view>
+        </div>
+    </div>
+    <div class="search-list">
+        <template is="searchList" data="{{list}}"/>
+    </div>
+</div>

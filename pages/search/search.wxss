@@ -1,0 +1,33 @@
+@import '../template/template.wxss';
+@import 'font.wxss';
+
+page {background-color: #f9f9f9;position: relative;}
+
+.search-box {
+  font-size: 28rpx;
+}
+.search-con {
+    padding: 18rpx 42rpx 38rpx;
+}
+.search-con strong {
+    line-height: 76rpx;
+}
+.search-con .input-box input,.search-con .input-box view {
+    background-color: #fff;
+    height: 64rpx;
+}
+.search-con .input-box input {
+    border: 1rpx solid #e0e0e0;
+    margin-right: 30rpx;
+    flex: 1;
+    padding: 0 20rpx;
+}
+
+
+.search-con .input-box view {
+    border: 1rpx solid #e0e0e0;
+    font-size: 28rpx;
+    text-align: center;
+    line-height: 64rpx;
+    width: 134rpx;
+}

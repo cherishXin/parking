@@ -1,0 +1,11 @@
+<div class="standard-box container">
+    <div class="tap-hea">
+        <div class="tap active">收费标准</div>
+    </div>
+    <div class="tap-con">
+        <import src="../../wxParse/wxParse.wxml"/>
+        <view class="wxParse">
+            <template is="wxParse" data="{{wxParseData:article_content.nodes}}"/>
+        </view>
+    </div>
+</div>

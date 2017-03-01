@@ -1,0 +1,30 @@
+<template name="showFee">
+  <div class="standard-btn">
+  <navigator url="../logs/logs" hover-class="navigator-hover"><span>收费优惠标准</span></navigator>
+  </div>
+</template>
+
+<template name="header">
+  <header class="flex">
+    <div class="date-left">
+      <i class="year">{{year}}</i>
+      <p class="date">{{month}} 月 {{date}} 日</p>
+      <i class="day">{{day}}</i>
+    </div>
+    <div class="pic-right">
+      <div class="pic" wx:if="{{pic}}" style="background-image:url({{pic}})"></div>
+      <div class="pic" wx:else></div>
+    </div>
+  </header>
+</template>
+
+<template name="searchList">
+    <ul class="tap-box">
+      <li class="item-tap flex" wx:for="{{list}}" wx:key bindtap="onSelect" data-carno="{{item.CarSerialNo}}">
+        <div class="item-con">
+          <figure><em wx:if="{{item.pic}}" style="background-image:url({{item.pic}})" ></em><em wx:else></em></figure>
+          <span>车牌号：{{item.CarSerialNo}}</span></div>
+        <div class="iconfont icon-jinru"></div>
+      </li>
+  </ul>
+</template>
