@@ -16,9 +16,9 @@ Page({
 
   // },
   onSelect:function(e) {
-    var carno = e.currentTarget.dataset.carno;
+    var car = e.currentTarget.dataset;
     wx.navigateTo({
-      url: '../pay/pay?carno='+carno,
+      url: '../pay/pay?carno='+car.carno+'&pic='+car.pic,
     });
   },
   setcarnFun: function(e) {

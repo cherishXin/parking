@@ -4,8 +4,7 @@
     "pages/search/search",
     "pages/records/records",
     "pages/standard/standard",
-    "pages/pay/pay",
-    "pages/logs/logs"
+    "pages/pay/pay"
   ],
   "window":{
     "backgroundTextStyle":"light",

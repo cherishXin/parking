@@ -1,10 +1,45 @@
 //app.js
 App({
   onLaunch: function () {
-    //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    var that = this;
+    var user = wx.getStorageSync('user') || {};    
+    var userInfo = wx.getStorageSync('userInfo') || {}; 
+    if((!user.openid || (user.expires_in || Date.now()) < (Date.now() + 600)) && (!userInfo.nickName)){   
+      wx.login({
+        success: function(res){
+          if (res.code) {
+            wx.getUserInfo({
+              success: function(infoRes){
+                wx.setStorageSync('userInfo', infoRes.userInfo);
+              }
+            });
+            var para = that.globalData;
+            wx.request({
+              url: 'https://api.weixin.qq.com/sns/jscode2session',
+              data: {
+                appid: para.appid,
+                secret: para.secret,
+                js_code: res.code,
+                grant_type: 'authorization_code'
+              },
+              method: 'POST',
+              header: {
+                "Content-Type":"application/x-www-form-urlencoded"
+              },            
+              success: function(requestRes){
+                var user={};  
+                user.openid = 'oq1Gkt1cOWRhX1RUYl23E1uIBXkI';
+                // user.openid = requestRes.data.openid;               
+                user.expires_in = Date.now() + requestRes.data.expires_in * 1000; 
+                wx.setStorageSync('user', user);
+              }
+            })
+          } else {
+            console.log('获取用户登录态失败！' + res.errMsg) 
+          }
+        }
+      });
+    }
   },
   getUserInfo:function(cb){
     var that = this
@@ -25,7 +60,9 @@ App({
     }
   },
   globalData:{
-    userInfo:null
+    userInfo:null,
+    appid:'wxbcf7a3474c5b35d2',
+    secret:'2014e3317bab3cad51d740602856fabe',
   },
   key_admin: 'e4273d13a384168962ee93a953b58ffd'
-})
+}) 

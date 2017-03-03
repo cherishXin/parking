@@ -26,3 +26,5 @@ span,text,view,input,div,p,dl,dt,dd,ul,li,var,em,strong,img{box-sizing: border-b
   display: flex;
   flex-direction: column;
 } 
+
+page {min-height: 100%;}

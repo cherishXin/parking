@@ -65,7 +65,7 @@ header {
   border-top: 1rpx solid #e0e0e0;
 }
 
-.tap-box li {
+.tap-box li.search-tap {
   background-color: #fff;
   border-bottom: 1rpx solid #e0e0e0;
   height: 160rpx;
@@ -73,11 +73,11 @@ header {
   padding: 0 42rpx;
 }
 
-.tap-box li .item-con {
+.tap-box li.search-tap .item-con {
   flex: 1;
 }
 
-.tap-box li .item-con figure{
+.tap-box li.search-tap .item-con figure{
   border: 1rpx solid #e0e0e0;
   border-radius: 10rpx;
   display: inline-block;
@@ -87,7 +87,7 @@ header {
   width: 84rpx;
 }
 
-.tap-box li .item-con figure em {
+.tap-box li.search-tap .item-con figure em {
   background: url('../../images/pic.jpg')  center no-repeat;
   background-size: cover;
   display: block;
@@ -95,7 +95,7 @@ header {
   width: 100%;
 }
 
-.tap-box li .item-con span {
+.tap-box li.search-tap .item-con span {
   font-size: 28rpx;
   font-weight: bold;
   padding-left: 38rpx;
@@ -107,3 +107,72 @@ header {
 }
 
 /*end searchList*/
+
+/*start btnList*/
+
+.footer {
+  bottom: 0;
+  font-size: 32rpx;
+  font-weight: bold;
+  height: 120rpx;
+  left: 0;
+  line-height: 120rpx;
+  position: fixed;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  width: 100%;
+}
+
+.footer .butn {
+  background-color: #09bb08;
+  flex: 1;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+
+.footer .butn.butn2 {
+  background-color: #c7c7c7;
+}
+
+/*end btnList*/
+
+/*start freeAdd*/
+
+.free-add {
+  background-color: #fff;
+  border-bottom: 1rpx solid #e0e0e0;
+  line-height: 103rpx;
+  padding: 0 42rpx;
+}
+
+.free-add .iconfont {
+  font-size: 30rpx;
+}
+
+.free-add.active i {
+  color: #32b200;
+}
+
+.free-add .icon {
+  color: #333;
+  font-size: 42rpx;
+  margin-right: 12rpx;
+  vertical-align: middle;
+}
+
+.free-add dt {
+  flex: 1;
+  color: #333;
+  font-weight: bold;
+}
+
+.free-add dt span {
+  vertical-align: middle;
+}
+
+.free-add dd {
+  color: #666;
+}
+
+/*end freeAdd*/

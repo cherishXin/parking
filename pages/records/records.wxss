@@ -1,1 +1,116 @@
-/* pages/records/records.wxss */
+@import '../template/template.wxss';
+
+page {background-color: #f9f9f9;position: relative;}
+.table {
+  border: 0px solid darkgray;
+}
+.tr {
+  display: flex;
+  border-bottom: 1rpx solid #e0e0e0;
+}
+
+.th,.td {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+}
+.td {
+    height: 130rpx;
+    line-height: 130rpx;
+}
+.table_header{
+  /*border-bottom: 1px solid #e0e0e0;*/
+}
+.td_box{
+  /*background: #E6F3F9;*/
+}
+.th {
+    background-color: #fff;
+    color: #666;
+    height: 90rpx;
+    line-height: 90rpx;
+}
+.th:nth-child(2) {margin: 0 2rpx;}
+
+.no-records {
+    display: none;
+    font-size: 28rpx;
+    left: 50%;
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+.no-records.active {
+    display: block;
+}
+
+.more-btn {
+  font-size: 28rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.more-btn.no-data {display: none;}
+
+
+/*page,.records-div {background-color: #f9f9f9;}
+.no-records {
+    display: none;
+    font-size: 28rpx;
+    left: 50%;
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+.no-records.active {
+    display: block;
+}
+.records-box {
+  border-collapse: collapse;
+  font-size: 28rpx;
+  text-align: center;
+  width: 100%;
+}
+.records-box th {
+    background-color: #fff;
+    border: 0;
+    border-bottom: 1rpx solid #e0e0e0;
+    color: #666;
+    height: 90rpx;
+    text-align: center;
+  }
+  .records-box th:nth-child(1) {padding-left: 20rpx;}
+  .records-box th:nth-child(4) {padding-right: 20rpx;}
+.records-box td {
+    border: 0;
+    border-bottom: 1rpx solid #e0e0e0;
+    color: #333;
+    height: 130rpx;
+}
+
+.records-box td:nth-child(1) {padding-left: 20rpx;}
+.records-box td:nth-child(4) {padding-right: 20rpx;}
+
+.records-box td p {line-height: 1;}
+.records-box td i {
+      color: #999;
+      font-size: 20rpx;
+      font-style: normal;
+      line-height: 1;
+    }
+
+.records-box td.getit {color: #09bb08;}
+
+.records-box td.getit.active {color: #999;}
+
+.more-btn {
+  font-size: 28rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.more-btn.no-data {display: none;}*/

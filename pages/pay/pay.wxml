@@ -1,2 +1,36 @@
-<!--pages/pay/pay.wxml-->
-<text>pages/pay/pay.wxml</text>
+<div class="pay-box">
+    <import src="../template/template.wxml"/> 
+    <template is="header" data="{{...date}}"/>
+    <div class="car-need-box">
+        <view class="car-no">车牌号：{{data.CarSerialNo}}</view>
+        <ul class="tap-box">
+            <li class="item-tap flex">
+                <div class="item-con">
+                <span>停车时长</span>
+                </div>
+                <div class="item-right">
+                <!--<span>{{data.park_time && utils.translateTime(data.park_time)}}</span>-->
+                </div>
+            </li>
+            <li class="item-tap flex">
+                <div class="item-con">
+                <span>停车费用</span>
+                </div>
+                <div class="item-right">
+                <span>{{data.MoneyValue}}元</span>
+                </div>
+            </li>
+            <block wx:if="{{data.is_freetime === '1'}}">
+                <template is="freeAdd" data="{{...memberFree}}"/>
+            </block>   
+            <block wx:if="{{data.is_reft === '1'}}">
+                <template is="freeAdd" data="{{...refundFree}}"/>
+            </block>
+        </ul>
+    </div>
+    <div class="fee-btn-box">
+        <template is="showFee" />
+        <template is="bottomBtns" data="{{btnList}}" />
+    </div>
+    <!--<Alert {...pay} ok={ this.ok } />-->
+</div>

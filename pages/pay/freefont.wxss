@@ -1,0 +1,21 @@
+
+@font-face {font-family: "iconfont";
+  src: url('//at.alicdn.com/t/font_7l2n0rdzxntdquxr.eot?t=1482396075893'); /* IE9*/
+  src: url('//at.alicdn.com/t/font_7l2n0rdzxntdquxr.eot?t=1482396075893#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/font_7l2n0rdzxntdquxr.woff?t=1482396075893') format('woff'), /* chrome, firefox */
+  url('//at.alicdn.com/t/font_7l2n0rdzxntdquxr.ttf?t=1482396075893') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/font_7l2n0rdzxntdquxr.svg?t=1482396075893#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-seiyw32:before { content: "\e625"; }
+
+.icon-xuanzhong:before { content: "\e639"; }
+

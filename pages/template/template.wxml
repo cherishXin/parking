@@ -1,6 +1,6 @@
 <template name="showFee">
   <div class="standard-btn">
-  <navigator url="../logs/logs" hover-class="navigator-hover"><span>收费优惠标准</span></navigator>
+  <navigator url="../standard/standard" hover-class="navigator-hover"><span>收费优惠标准</span></navigator>
   </div>
 </template>
 
@@ -20,11 +20,43 @@
 
 <template name="searchList">
     <ul class="tap-box">
-      <li class="item-tap flex" wx:for="{{list}}" wx:key bindtap="onSelect" data-carno="{{item.CarSerialNo}}">
+      <li class="search-tap item-tap flex" wx:for="{{list}}" wx:key bindtap="onSelect" data-carno="{{item.CarSerialNo}}"  data-pic="{{item.carimg}}">
         <div class="item-con">
           <figure><em wx:if="{{item.pic}}" style="background-image:url({{item.pic}})" ></em><em wx:else></em></figure>
           <span>车牌号：{{item.CarSerialNo}}</span></div>
         <div class="iconfont icon-jinru"></div>
       </li>
   </ul>
+</template>
+
+<template name="recordsList">
+  <view class="tr td_box" wx:for="{{list}}" wx:key data-id="{{item.id}}">
+    <view class="td">
+    {{item.pay_time}}
+      <!--<i wx:if="{{item.pay_time != 0}}">{{new Date(parseInt(item.pay_time) * 1000).format('h:m')}}</i>
+      <p wx:if="{{item.pay_time != 0}}">{{new Date(parseInt(item.pay_time) * 1000).format('M-d')}}</p>
+      <i wx:if="{{item.pay_time != 0}}">{{new Date(parseInt(item.pay_time) * 1000).format('yyyy')}}</i>-->
+    </view>
+    <view class="td">{{item.carno}}</view>
+    <view class="td ">￥{{item.payfee}}</view>
+  </view>
+</template>
+
+<template name="freeAdd">
+  <li>
+    <dl class="free-add flex active" data-type="{{typeVal}}" bindtap="clickFun">
+      <dt>
+        <i class="icon iconfont {{isChecked[typeVal] ? 'icon-xuanzhong' : 'icon-seiyw32'}}"></i>
+        <span>{{title}}{{ level ? '（'+ level +'）' : '' }}{{checked}}</span>
+      </dt>
+      <dd>-{{ (data.free_time === 0 || data.free_time) ? (data.free_time + '小时') : '' }}</dd>
+    </dl>
+  </li>
+</template>
+
+<template name="bottomBtns">
+  <footer class="footer flex">
+    <div bindtap="{{item.btnFun && item.btnFun}}" wx:for="{{btnList}}" wx:key style="{{item.style && item.style}}" class="butn {{'butn'+item.id}}"
+      >{{item.btnName}}</div>
+  </footer>
 </template>

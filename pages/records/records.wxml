@@ -1,2 +1,19 @@
-<!--pages/records/records.wxml-->
-<text>pages/records/records.wxml</text>
+<div class="records-div flexc">
+    <view class="table">
+        <view class="tr table_header">
+            <view class="th">缴费时间</view>
+            <view class="th">车辆</view>
+            <view class="th ">停车缴费</view>
+        </view>
+        <block wx:if="{{list.length > 0}}">
+            <import src="../template/template.wxml"/> 
+            <template is="recordsList" data="{{list}}"/>
+        </block>
+        <div wx:else class="no-records active">
+            <span>无缴费记录！</span>
+        </div>
+    </view>
+    <div class="{{isData ? 'more-btn' : 'more-btn no-data'}}">
+        <span bindtap="pageFun">加载更多</span>
+    </div>
+</div>

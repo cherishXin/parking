@@ -1,1 +1,75 @@
-/* pages/pay/pay.wxss */
+@import '../template/template.wxss';
+@import './font.wxss';
+@import './freefont.wxss';
+
+page {background-color: #f9f9f9;}
+
+.iconfont {
+  color: #272536;
+  font-size: 40rpx;
+  vertical-align: middle;
+}
+
+.pay-box {
+  font-size: 28rpx;
+  padding-bottom: 120rpx;
+}
+
+.pay-box .car-need-box {
+    padding-bottom: 120rpx;
+    position: relative;
+}
+
+.pay-box .fee-btn-box {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+}
+
+.pay-box .fee-btn-box .standard-btn {
+    background-color: #f9f9f9;
+    bottom: 120rpx;
+    line-height: 80rpx;
+    position: absolute;
+}
+
+.pay-box .fee-btn-box .footer {position: absolute;}
+
+  
+.pay-box .fee-btn-box .footer div {width: 50%;  }
+
+.pay-box .car-no {
+    font-size: 32rpx;
+    font-weight: bold;
+    height: 130rpx;
+    line-height: 130rpx;
+    text-align: center;
+  }
+
+.pay-box .tap-box .item-tap {
+    border-bottom: 1px solid #e0e0e0;
+    background-color: transparent;
+    height: 160rpx;
+    line-height: 160rpx;
+    padding: 0 42rpx;
+}
+
+.pay-box .tap-box .item-tap .item-con {flex: 1;}
+
+.pay-box .tap-box .item-tap .item-con span {
+    font-size: 28rpx;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.pay-box .tap-box .item-tap .item-right span {
+    color: #999;
+    vertical-align: middle;
+}
+
+.pay-box .tap-box .item-tap .item-right span strong{
+   color: #999;font-weight: normal;margin-right: 24rpx;
+}
+
+.pay-box .tap-box .item-tap .item-right i {vertical-align: middle;}
