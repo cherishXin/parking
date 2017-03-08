@@ -29,10 +29,7 @@ Page({
   checkFun:function() {
     var that = this;
     if (!that.data.carno) {
-      wx.showModal({
-        title: '错误提示',
-        content: "车牌号不能为空！"
-      });
+      util.alert({msg:"车牌号不能为空！"});
       return false;
     }
     util.request('POST',{
@@ -47,27 +44,11 @@ Page({
             list: result.data.data,
           });
         } else {
-          wx.showModal({
-            title: '错误提示',
-            content: result.data.msg,
-            success: function(res) {
-                if (res.confirm) {
-                    console.log('用户点击确定')
-                }
-            }
-          })
+          util.alert({msg:result.data.msg});
         }
       },
       function(error){
-        wx.showModal({
-            title: '错误提示',
-            content: error.data.msg,
-            success: function(res) {
-                if (res.confirm) {
-                    console.log('用户点击确定')
-                }
-            }
-          })
+        util.alert({msg:error.data.msg});
       })
   },
   onLoad:function(options){

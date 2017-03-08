@@ -20,6 +20,7 @@
   margin: 0 auto;
   padding: 116rpx 0 104rpx;
   /*width: 506rpx;*/
+  align-self:center;
 }
 
 

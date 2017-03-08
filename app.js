@@ -28,8 +28,8 @@ App({
               },            
               success: function(requestRes){
                 var user={};  
-                user.openid = 'oq1Gkt1cOWRhX1RUYl23E1uIBXkI';
-                // user.openid = requestRes.data.openid;               
+                // user.openid = 'oq1Gkt1cOWRhX1RUYl23E1uIBXkI';
+                user.openid = requestRes.data.openid;               
                 user.expires_in = Date.now() + requestRes.data.expires_in * 1000; 
                 wx.setStorageSync('user', user);
               }
@@ -64,5 +64,5 @@ App({
     appid:'wxbcf7a3474c5b35d2',
     secret:'2014e3317bab3cad51d740602856fabe',
   },
-  key_admin: 'e4273d13a384168962ee93a953b58ffd'
+  key_admin: '202cb962ac59075b964b07152d234b70'
 }) 

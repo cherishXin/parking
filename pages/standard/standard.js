@@ -20,27 +20,11 @@ Page({
             article_content:WxParse.wxParse('article_content', 'html', result.data.data.function_name, that, 5)
           });
         } else {
-          wx.showModal({
-            title: '错误提示',
-            content: result.data.msg,
-            success: function(res) {
-                if (res.confirm) {
-                    console.log('用户点击确定')
-                }
-            }
-          })
+          util.alert({msg:result.data.msg});
         }
       },
       function(error){
-        wx.showModal({
-            title: '错误提示',
-            content: error.data.msg,
-            success: function(res) {
-                if (res.confirm) {
-                    console.log('用户点击确定')
-                }
-            }
-          })
+        util.alert({msg:error.data.msg});
       })
   },
   onReady:function(){

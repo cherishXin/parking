@@ -18,12 +18,6 @@ page {background-color: #f9f9f9;position: relative;}
     height: 130rpx;
     line-height: 130rpx;
 }
-.table_header{
-  /*border-bottom: 1px solid #e0e0e0;*/
-}
-.td_box{
-  /*background: #E6F3F9;*/
-}
 .th {
     background-color: #fff;
     color: #666;

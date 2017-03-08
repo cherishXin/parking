@@ -9,7 +9,7 @@
                 <span>停车时长</span>
                 </div>
                 <div class="item-right">
-                <!--<span>{{data.park_time && utils.translateTime(data.park_time)}}</span>-->
+                <span>{{data.park_time}}</span>
                 </div>
             </li>
             <li class="item-tap flex">
@@ -30,7 +30,7 @@
     </div>
     <div class="fee-btn-box">
         <template is="showFee" />
-        <template is="bottomBtns" data="{{btnList}}" />
+        <template is="bottomBtns" data="{{btnList:btnList,data:data}}" />
     </div>
     <!--<Alert {...pay} ok={ this.ok } />-->
 </div>

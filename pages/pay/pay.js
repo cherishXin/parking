@@ -29,16 +29,113 @@ Page({
     btn2Color: '#279df2',
     fee: 0,
     checked: {
-      member_free: 'active', // 免费时长
-      refund_free: 'active', // 购物减免
+      member_free: '', // 免费时长
+      refund_free: '', // 购物减免
     },
     btnList:[],
   },
+  pointPay: function(orderno){
+    var that = this;
+    util.request('POST',{
+      url: '/ParkApp/ParkPay/paybyscore',
+      data: {
+        carno: this.data.carno,
+        key_admin: app.key_admin,
+        openid: wx.getStorageSync('user').openid,
+        orderno,
+      }},
+      function(result){
+        if (result.data.code === 200) {
+          if (wx.getStorageSync('localstorage') === '1') {
+            wx.setStorageSync(app.key_admin+'park_mycars', [{CarSerialNo:that.data.carno,carimg:that.data.pic}]);
+          } else {
+            wx.setStorageSync(app.key_admin+'park_mycars',[]);
+          }
+        } else {
+          util.alert({msg:result.data.msg});
+        }
+      },
+      function(error){
+        util.alert({msg:error.data.msg});
+      });
+  },
   pointFun: function(){
-    console.log('积分');
+    var park = this.data.data;
+    var that = this;
+    if (this.data.btn2Color === '#279df2') {
+      if (park.IntValue === 0) {
+        util.alert({msg:'消费金额为0，无需支付！'});
+      } else {
+        util.request('POST',{
+          url: '/ParkApp/ParkPay/cscoreorder',
+          data: {
+            carno: that.data.carno,
+            key_admin: app.key_admin,
+            openid: wx.getStorageSync('user').openid,
+          }},
+          function(result){
+            if (result.data.code === 200) {
+              that.pointPay(result.data.data.orderNo)
+            } else {
+              util.alert({msg:result.data.msg});
+            }
+          },
+          function(error){
+            util.alert({msg:error.data.msg});
+          })
+      }
+    }
+  },
+  wxPayDo:function(data) {
+    wx.requestPayment({
+      timeStamp: data.timeStamp,
+      nonceStr: data.nonceStr,
+      package: data.package,
+      signType: data.signType,
+      paySign: data.paySign,
+      success:function(res){
+        console.log(res);
+      },
+      fail:function(res){
+        console.log(res);
+      }
+    });
   },
   wxFun: function(){
-    console.log('微信');
+    var park = this.data.data;
+    var that = this;
+    if (park.MoneyValue === 0) {
+      util.alert({msg:'消费金额为0，无需支付！'});
+    } else {
+      var checkeds = this.data.checked;
+      util.request('POST',{
+          url: '/ParkApp/ParkPay/paybyweixin',
+          data: {
+            carno: that.data.carno,
+            key_admin: app.key_admin,
+            openid: wx.getStorageSync('user').openid,
+            use_freetime: checkeds.member_free === 'active' ? 1 : 2,
+            use_refreetime: checkeds.refund_free === 'active' ? 1 : 2,
+          }},
+          function(result){
+            if (result.data.code === 200) {
+              if (result.data.data.total_fee !== 0) {
+                that.wxPayDo(result.data.data);
+              } else {
+                if (wx.getStorageSync('localstorage') === '1') {
+                  wx.setStorageSync(app.key_admin+'park_mycars', [{CarSerialNo:that.data.carno,carimg:that.data.pic}]);
+                } else {
+                  wx.setStorageSync(app.key_admin+'park_mycars',[]);
+                }
+              }
+            } else {
+              util.alert({msg:result.data.msg});
+            }
+          },
+          function(error){
+            util.alert({msg:error.data.msg});
+          });
+    }
   },
   checkEnoughPoint:function(park) {
     if (park.bonus >= park.IntValue) {
@@ -96,7 +193,7 @@ Page({
     }
     this.loadFreeFun(this.data.data);
     this.checkChecked(this.data.checked);
-    this.checkEnoughPoint(this.data.data);
+    this.loadBtnsFun(this.data.data);
   }, 
   loadFreeFun:function(park){
     this.setData({
@@ -159,7 +256,9 @@ Page({
         month: new Date().nowdate().month,
         date: new Date().nowdate().date,
         day: new Date().nowdate().day
-      }
+      },
+      carno: options.carno,
+      pic: options.pic
     });
     util.request('POST',{
       url: '/ParkApp/ParkPay/choosecar',
@@ -170,40 +269,26 @@ Page({
       }},
       function(result){
         if (result.data.code === 200) {
+          var da = result.data.data;
+          da.park_time = util.translateTime(da.park_time);
           that.setData({
-            data: result.data.data,
+            data: da,
           });
-          that.loadFreeFun(result.data.data);
-          that.loadBtnsFun(result.data.data);
+          that.loadFreeFun(da);
+          that.loadBtnsFun(da);
+          that.checkEnoughPoint(da);
         } else {
-          wx.showModal({
-            title: '错误提示',
-            content: result.data.msg,
-            success: function(res) {
-                if (res.confirm) {
-                    console.log('用户点击确定')
-                }
-            }
-          })
+          util.alert({msg:result.data.msg});
         }
       },
       function(error){
-        wx.showModal({
-            title: '错误提示',
-            content: error.data.msg,
-            success: function(res) {
-                if (res.confirm) {
-                    console.log('用户点击确定')
-                }
-            }
-          })
+        util.alert({msg:error.data.msg});
       })
   },
   onReady:function(){
     // 页面渲染完成
   },
   onShow:function(){
-    this.checkEnoughPoint(this.data.data);
     // 页面显示
   },
   onHide:function(){

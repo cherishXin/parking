@@ -65,32 +65,17 @@ Page({
       }},
       function(result){
         if (result.data.code === 200) {
+          wx.setStorageSync('localstorage', result.data.localstorage);
           that.setData({
             logo: result.data.logo,
             list: result.data.data,
           });
         } else {
-          wx.showModal({
-            title: '错误提示',
-            content: result.data.msg,
-            success: function(res) {
-                if (res.confirm) {
-                    console.log('用户点击确定')
-                }
-            }
-          })
+          util.alert({msg:result.data.msg});
         }
       },
       function(error){
-        wx.showModal({
-            title: '错误提示',
-            content: error.data.msg,
-            success: function(res) {
-                if (res.confirm) {
-                    console.log('用户点击确定')
-                }
-            }
-          })
+        util.alert({msg:error.data.msg});
       })
   }
 })
